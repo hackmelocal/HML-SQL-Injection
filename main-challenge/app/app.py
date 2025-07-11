@@ -153,10 +153,23 @@ def home():
 
 @app.route('/products')
 def product_list():
+    # VULNERABILITY: The 'sort_by' parameter is directly used in the SQL query.
+    # This allows an attacker to inject SQL into the ORDER BY clause.
+    # For example: /products?sort_by=CASE WHEN (SELECT 1)=1 THEN name ELSE price END
+    sort_by = request.args.get('sort_by', 'id') # Default sort by id
+
     with sqlite3.connect("app.db") as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM products")
-        products = cursor.fetchall()
+        # Unsafe query construction
+        query = f"SELECT * FROM products ORDER BY {sort_by}"
+        try:
+            cursor.execute(query)
+            products = cursor.fetchall()
+        except sqlite3.OperationalError:
+            # Handle potential SQL errors gracefully to not reveal too much information
+            products = [] 
+            flash('مرتب سازی با خطا مواجه شد.', 'danger')
+
     return render_template('product_list.html', products=products)
 
 

@@ -27,6 +27,14 @@
 <!-- Start Products -->
 <section class="section">
     <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 text-center">
+                <h5 class="mb-0">مرتب سازی بر اساس: 
+                    <a href="{{ url_for('product_list', sort_by='name') }}" class="text-dark">نام</a> | 
+                    <a href="{{ url_for('product_list', sort_by='price') }}" class="text-dark">قیمت</a>
+                </h5>
+            </div>
+        </div>
         <div class="row">
             <!-- Start Product Loop -->
             {% if products %}
