@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: webserver
     ports:
-      - "8080:8080"
+      - "8000:8000"
     networks:
       - app-network
     volumes:
@@ -25,7 +25,7 @@ services:
       dockerfile: Dockerfile
     container_name: paymentserver
     ports:
-      - "8001:8001"
+      - "8080:8080"
     networks:
       - app-network
     volumes:

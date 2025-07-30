@@ -173,7 +173,7 @@ def product_list():
     return render_template('product_list.html', products=products)
 
 
-@app.route('/product/<int:product_id>')  # Flask will now enforce integer-only IDs
+@app.route('/product/<int:product_id>')
 def product_detail(product_id):
     with sqlite3.connect("app.db") as conn:
         cursor = conn.cursor()
@@ -620,4 +620,4 @@ def payment_verify():
 
 if __name__ == '__main__':
     init_db()  # Initialize database
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)

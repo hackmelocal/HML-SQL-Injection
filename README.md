@@ -1,21 +1,49 @@
-# 🧱 Flask Challenge Base Template
+# 🔐 Boolean-Based SQL Injection Challenge — hackmelocal.com
 
-> 🧠 **This repository is maintained by [HackMeLocal.com](https://hackmelocal.com)** — a platform focused on hands-on cybersecurity learning and local CTF-style challenges.
+Welcome to the **Boolean-Based SQLi** challenge on [hackmelocal.com](https://hackmelocal.com) — a hands-on, real-world-style web security lab where you will learn how to identify and exploit **Boolean-Based SQL Injection** vulnerabilities, even when no direct database errors or messages are shown.
 
-Welcome! This is a **base Flask web application** meant to serve as a **starting point for creating your own security challenges**. It does **not contain any vulnerabilities or challenge logic by default** — it’s just a minimal, functional app that you can build on.
+> ⚠️ This challenge is designed **strictly for educational and research purposes** inside the controlled lab environment of `hackmelocal.com`. Any misuse on live systems is **illegal** and **unethical**.
 
 ---
 
-## 🚀 Run the App
+## 🎯 Challenge Objective
+
+Your goal is to **detect** and **exploit** a Boolean-Based SQL Injection vulnerability in the provided web app, and extract insights about the backend database — even when no SQL errors are exposed.
+
+### 📌 Key Concepts:
+- Boolean-Based (Inferential) SQL Injection
+- Logic-based testing using `AND 1=1` and `AND 1=2`
+- Manual testing and automation using tools like `ghauri` or `SQLMap`
+- Prevention techniques using secure coding practices
+
+---
+
+## ⚙️ How to Run the Challenge
 
 You can run this app in two easy ways:
 
-* ✅ **Option 1:** Run locally with Docker
-* ✅ **Option 2:** Run online with GitHub Codespaces
+* ✅ **Option 1:** Run online with GitHub Codespaces  
+* ✅ **Option 2:** Run locally with Docker
 
 ---
 
-## 🖥️ Option 1: Run Locally (Using Docker)
+## ☁️ Option 1: Run in GitHub Codespaces (No Installation Needed)
+
+1. Click the green **`Code`** button on the GitHub repository page  
+2. Go to the **`Codespaces`** tab  
+3. Click **`Create codespace on main`**  
+4. Once the Codespace loads, open the terminal with <kbd>Ctrl</kbd> + <kbd>`</kbd>  
+5. Start the app:
+
+   ```bash
+   docker compose up
+````
+
+6. Use the **port preview** link in Codespaces to access the challenge in your browser.
+
+---
+
+## 🖥️ Option 2: Run Locally (Using Docker)
 
 ### ✅ Requirements
 
@@ -31,56 +59,48 @@ You can run this app in two easy ways:
    cd HML-base
    ```
 
-2. Start the app:
+2. Start the application:
 
    ```bash
    docker compose up
    ```
 
-3. Open your browser and visit:
+3. Open your browser and go to:
 
    ```
    http://localhost:8000
    ```
 
----
-
-## ☁️ Option 2: Run in GitHub Codespaces (No Installation Needed)
-
-1. Click the green **`Code`** button on the repository page
-
-2. Select the **`Codespaces`** tab
-
-3. Click **`Create codespace on main`**
-
-4. Once loaded, open the terminal (\`Ctrl + \`\`)
-
-5. Run:
-
-   ```bash
-   docker compose up
-   ```
-
-6. Use the port preview link to open the app
+> 🧭 **Note:**
+>
+> * The **main website** runs on **port 8000**
+> * The **payment service** runs on **port 8080**
 
 ---
 
-## 🧩 What This Is
+## 🔒 How to Prevent This
 
-This project is **not a challenge** and contains **no vulnerabilities**. It’s a clean, minimal Flask setup that you can use to:
+**Best practices to mitigate SQL Injection:**
 
-* Create custom CTF challenges
-* Prototype web apps for security testing
-* Run local labs in a controlled environment
-
----
-
-## ⚠️ Disclaimer
-
-> This is a learning scaffold and **not intended for public or production use**. You are responsible for any modifications and the security of your deployments.
+* Use **Prepared Statements (Parameterized Queries)**
+* Sanitize and validate all user inputs on the server side
+* Avoid concatenating SQL with untrusted input
+* Use **ORMs** that abstract query building securely
+* Implement **least privilege** for database access
+* Enable **logging** and monitor for suspicious patterns
 
 ---
 
-## 🤝 Want to Contribute?
+## 📚 Recommended Reading
 
-If you use this base to build your own challenges and want to share them with the HackMeLocal community, feel free to fork the repo or get in touch!
+* [PayloadsAllTheThings - SQL Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection)
+* [HackTricks - SQL Injection](https://hacktricks.boitatech.com.br/pentesting-web/sql-injection)
+* [PortSwigger Web Security Academy - SQL Injection](https://portswigger.net/web-security/sql-injection)
+* [OWASP - SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection)
+
+---
+
+## 🧾 License & Legal
+
+This lab is developed by **hackmelocal.com** for ethical hacking and education only.
+Do **not** use this knowledge on systems you don’t own or have permission to test.
