@@ -350,10 +350,6 @@ def add_to_cart(product_id):
     if 'username' not in session:
         flash('لطفا برای اضافه کردن محصول به سبد خرید، ابتدا وارد شوید.', 'warning')
         return redirect(url_for('login'))
-
-    # VULNERABILITY: Switched from int() to float() and removed validation.
-    # The application now accepts fractional quantities like 0.1, -5, etc.
-    # A robust application should check if the quantity is a positive integer.
     try:
         quantity = float(request.form.get('quantity', 1.0))
     except (ValueError, TypeError):
